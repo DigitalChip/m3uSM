@@ -148,28 +148,27 @@ class M3uParserStateMachine
         $result = array();
 
         // Parse EXTINF tag attributes
-//        $pattern = '/(\S+\s*=\s*"[^"]+"|[^\s"]*\s*=\s*[^",\s]+)/iu';
         $pattern = '/([\w-]+\s*=\s*"[^"]*"|[\w-]+\s*=\s*[^"\s]+)\s*/iu';
         preg_match_all($pattern, $line, $matches);
 
         if (count($matches) > 1) {
             $res = array();
+            // Split attributes in string to key:value
+            // 'explode' doesn't work because there may be other delimiters in the string (=)
             foreach ($matches[1] as $attrline) {
-
-                $attrArray = preg_split('/=\s*"/', $attrline);
-//                $attrArray = explode('=', $attrline);
-                $attrValue = stripslashes(trim($attrArray[1], '"='));
-                $res[$attrArray[0]] = $attrValue;
+                $pos = stripos($attrline, '=');
+                $attrName = substr($attrline, 0, $pos);
+                $attrValue = substr($attrline, $pos + 1);
+                $res[$attrName] = $attrValue;
             }
             $result['attributes'] = $res;
         }
 
+
         // Remove attributes from string line
-        $pattern = '/([\w-]+\s*=\s*"[^"]*"|[\w-]+\s*=\s*[^"\s]+)\s*/iu';
         $line = preg_replace($pattern, "", $line);
 
-
-        // Parse EXTINF tag title and duration
+        // Parse EXTINF tag title and duration in clean sting line (removed attributes)
         $pattern = '/:\s*(-?[\d.]+)\s*,\s*(.*)/iu';
         preg_match_all($pattern, $line, $matches);
 
