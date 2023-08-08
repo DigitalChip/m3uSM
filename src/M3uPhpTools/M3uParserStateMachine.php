@@ -141,7 +141,7 @@ class M3uParserStateMachine
 
     /**
      * @param string $line
-     * @return array
+     * @return array <string,array>
      */
     private function processExtInfTag(string $line): array
     {
