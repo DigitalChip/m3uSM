@@ -147,28 +147,35 @@ class M3uParserStateMachine
     {
         $result = array();
 
-        // Parse EXTINF tag title and duration
-        $pattern = '/:\s*(-?[\d.]+)(?:[^,]*),\s*(.*)/iu';
-        preg_match_all($pattern, $line, $matches);
-
-        if (count($matches) >= 2) {
-            $result['duration'] = floatval($matches[1][0]);
-            $result['title'] = stripslashes(trim($matches[2][0], '"'));
-        }
-
         // Parse EXTINF tag attributes
 //        $pattern = '/(\S+\s*=\s*"[^"]+"|[^\s"]*\s*=\s*[^",\s]+)/iu';
-        $pattern = '/[\w-]+\s*=\s*"[^"]*"|[\w-]+\s*=\s*[^"]+/iu';
+        $pattern = '/([\w-]+\s*=\s*"[^"]*"|[\w-]+\s*=\s*[^"\s]+)\s*/iu';
         preg_match_all($pattern, $line, $matches);
 
         if (count($matches) > 1) {
             $res = array();
             foreach ($matches[1] as $attrline) {
-                $attrArray = explode('=', $attrline);
+
+                $attrArray = preg_split('/=\s*"/', $attrline);
+//                $attrArray = explode('=', $attrline);
                 $attrValue = stripslashes(trim($attrArray[1], '"='));
                 $res[$attrArray[0]] = $attrValue;
             }
             $result['attributes'] = $res;
+        }
+
+        // Remove attributes from string line
+        $pattern = '/([\w-]+\s*=\s*"[^"]*"|[\w-]+\s*=\s*[^"\s]+)\s*/iu';
+        $line = preg_replace($pattern, "", $line);
+
+
+        // Parse EXTINF tag title and duration
+        $pattern = '/:\s*(-?[\d.]+)\s*,\s*(.*)/iu';
+        preg_match_all($pattern, $line, $matches);
+
+        if (count($matches) >= 2) {
+            $result['duration'] = floatval($matches[1][0]);
+            $result['title'] = stripslashes(trim($matches[2][0], '"'));
         }
 
         return $result;
