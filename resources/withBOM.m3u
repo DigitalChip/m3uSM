@@ -1,0 +1,13 @@
+﻿#EXTM3U url-tvg="http://www.teleguide.info/download/new3/jtv.zip" m3uautoload=1 deinterlace=8 cache=500
+#EXTINF:-1 tvg-id="5350" timeshift="14" catchup-days="14" catchup-type="flussonic-ts" group-title="Cinema" tvg-logo="http://pl.ottg.tv/350.jpg" ,Марлоу
+http://str17.ottg.tv/vod/05350.mp4/video.m3u8?token=0cf5
+#EXTINF:5880 tvg-id="5349" timeshift="14" catchup-days="14" catchup-type="flussonic-ts" group-title="Cinema" tvg-logo="http://pl.ottg.tv/349.jpg" ,Смотрите, как они бегут
+http://str17.ottg.tv/vod/05349.mp4/video.m3u8?token=0cf5
+#EXTINF:6840 tvg-id="5348" group-title="Cinema" tvg-logo="http://pl.ottg.tv/348.jpg" ,Свежатинка
+http://str17.ottg.tv/vod/05348.mp4/video.m3u8?token=0cf5
+#EXTINF:5160 tvg-id="5347" group-title="Cinema" tvg-logo="http://pl.ottg.tv/347.jpg" ,Эллиот и волшебный амулет
+http://str17.ottg.tv/vod/05347.mp4/video.m3u8?token=0cf5
+#EXTINF:5460 tvg-id="5346" group-title="Cinema" tvg-logo="http://pl.ottg.tv/346.jpg" ,Пинбол: Человек, который спас игру
+http://str17.ottg.tv/vod/05346.mp4/video.m3u8?token=0cf5
+#EXTINF:7260 tvg-id="5345" group-title="Cinema" tvg-logo="http://pl.ottg.tv/345.jpg" ,Добрый медбрат
+http://str17.ottg.tv/vod/05345.mp4/video.m3u8?token=0cf5

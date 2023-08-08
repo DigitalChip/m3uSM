@@ -1,0 +1,31 @@
+/.idea
+/.vscode
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+
+### Composer
+composer.phar
+composer.lock
+### Node
+/node_modules
+package-lock.json
+
+### PHPUnit template
+.phpunit.result.cache
+.phpunit.cache
+phpunit.xml
+
+### PHP-CS-Fixer template
+.php-cs-fixer.cache
+.php-cs-fixer.php
+phpstan.neon
+
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+

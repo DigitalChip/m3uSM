@@ -1,0 +1,26 @@
+{
+    "name": "xsid/m3usm",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "M3usm\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\": "Tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DigitalChip",
+            "email": "xsidmail@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.3"
+    }
+}
