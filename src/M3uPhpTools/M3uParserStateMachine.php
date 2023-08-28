@@ -45,7 +45,7 @@ class M3uParserStateMachine
             switch ($currentState) {
                 case self::STATE_INITIAL:
                     // Check if the currentLine starts with '#EXTM3U'
-                    if (strpos($currentLine, '#EXTM3U') === 0) {
+                    if (stripos($currentLine, '#EXTM3U') === 0) {
                         $currentState = self::STATE_EXT_M3U;
                         break;
                     }
@@ -54,7 +54,7 @@ class M3uParserStateMachine
 
                 case self::STATE_PROCESS_TAGS:
 
-                    if (strpos($currentLine, '#EXTINF:') === 0) {
+                    if (stripos($currentLine, '#EXTINF:') === 0) {
                         $currentState = self::STATE_EXTINF;
                     } elseif (stripos($currentLine, '#EXTGRP:') === 0) {
                         $currentState = self::STATE_EXTGRP;
